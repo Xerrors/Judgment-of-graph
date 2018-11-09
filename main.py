@@ -41,7 +41,6 @@ def paintCircle():
     G = Graph(n)
     R = canvasSide*0.3
     oval = [[0]*2 for i in range(n)]
-    canvas.delete(cvImage)
     deleteAll()
     for i in range(n): 
         angl = i * 2 * math.pi / n + math.pi / 2
@@ -56,6 +55,7 @@ def paintCircle():
 
 # 删除圆圈直线和箭头
 def deleteAll():
+    canvas.delete(cvImage)
     for item in canvas.find_withtag("oval"):
         canvas.delete(item)
     for item in canvas.find_withtag("line"):
@@ -104,7 +104,7 @@ def drawArrow(line, eventX, eventY):
 
         k = math.fabs((eventY - line.startY) / (eventX - line.startX))
         m = t / (1 + k * k) ** 0.5
-        n = p / (1 + k * k)** 0.5
+        n = p / (1 + k * k) ** 0.5
         points.extend((x0 + m * diraX, y0 + k * m * diraY))
         points.extend((x0 - k * n * diraX, y0 + n * diraY))
         points.extend((x0 + k * n * diraX, y0 - n * diraY))      
