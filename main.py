@@ -12,9 +12,6 @@ window.title('离散数学-我的最爱')
 window.geometry('900x1000')
 window.resizable(width=False, height=False)
 
-# 用户已经绘制的标志
-flag = 0
-
 # 图像的设置
 img = 0
 cvImage = 0
@@ -40,8 +37,6 @@ def paintCircle():
     global n
     global oval
     global G
-    global flag
-    flag = 1
     n = int(sb.get())
     G = Graph(n)
     R = canvasSide*0.3
@@ -187,7 +182,7 @@ def onLeftButtonUp(event):
 def judgeConet():
     global img
     global cvImage
-    if (flag == 0):
+    if (n == 12):
         img = tk.PhotoImage(
             file="images/q" + str(random.randint(0, 14)) + ".gif")
         cvImage = canvas.create_image(
