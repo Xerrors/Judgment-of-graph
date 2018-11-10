@@ -9,6 +9,8 @@ class Graph():
 
     def conetType(self):
         self.martix.reachableMartix()
+        if (self.martix.size == 12):
+            return "SB"
         for i in range(self.martix.size):
             for j in range(self.martix.size):
                 if (self.martix.M[i][j] + self.martix.M[j][i] == 0):

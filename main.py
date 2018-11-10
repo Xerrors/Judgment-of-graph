@@ -9,22 +9,23 @@ from line import Line
 # 创建窗口数
 window = tk.Tk()
 window.title('离散数学-我的最爱')
-window.geometry('900x1000')
+window.geometry('800x900')
 window.resizable(width=False, height=False)
+window.iconbitmap("./icon.png")
 
 # 图像的设置
 img = 0
 cvImage = 0
 
 # 画布的边长
-canvasSide = 900
+canvasSide = 800
 
 # 画出来的线的一些设置
 line = Line()
 
 # 圆圈的设置
-n = 12  # 最大圆圈数
-r = 50  # 圆圈的半径
+n = 12  # 圆圈数
+r = 40  # 圆圈的半径
 CircleIndex = -1  # 圆圈的索引
 ovalColor = '#1F6FB5'  # 圆圈的颜色
 oval = [[0] * 2 for i in range(n)]  # 圆圈的数组
@@ -51,7 +52,6 @@ def paintCircle():
 
         canvas.create_oval(
             (Ox - r, Oy - r, Ox + r, Oy + r), fill=ovalColor, width=0, tag='oval')
-    canvas.pack()
 
 # 删除圆圈直线和箭头
 def deleteAll():
@@ -65,21 +65,25 @@ def deleteAll():
 
 # 画个小星星
 def polygon_star(event):
-    points = []
-    p = 20
-    t = 5
-    fill='#e03636'
-    width = 0
-    x = random.randint(0+p,canvasSide-p)
-    y = random.randint(0+p,canvasSide-p)
-    
-    for i in (1,-1):
-        points.extend((x,       y + i*p))
-        points.extend((x + i*t, y + i*t))
-        points.extend((x + i*p, y))
-        points.extend((x + i*t, y - i * t))
 
-    # canvas.create_polygon(points, fill=fill, width=width)
+    # p = 20
+    # t = 5
+    # x = random.randint(0+p,canvasSide-p)
+    # y = random.randint(0+p,canvasSide-p)
+
+    # points = []
+    # fill='#e03636'
+    # for i in (1,-1):
+    #     points.extend((x,       y + i*p))
+    #     points.extend((x + i*t, y + i*t))
+    #     points.extend((x + i*p, y))
+    #     points.extend((x + i*t, y - i * t))
+
+    # # canvas.create_polygon(points, fill=fill, width=0)
+
+    x = random.randint(100,canvasSide-100)
+    y = random.randint(100,canvasSide-100)
+
     canvas.create_text(x,y,text="离散")
 
 # 画个箭头
@@ -123,7 +127,6 @@ def checkPoint(x, y):
     global oval
     for i in range(n):
         if ((x - oval[i][0])** 2 + (y - oval[i][1])** 2 <= r**2):
-            # print(i)
             return i
     return -1
 
@@ -154,7 +157,6 @@ def drawaline(event):
 def onLeftButtonUp(event):
     global CircleIndex
     global line
-    # global G
 
     CircleIndex = checkPoint(event.x, event.y)
     if (CircleIndex >= 0 ):
@@ -182,32 +184,31 @@ def onLeftButtonUp(event):
 def judgeConet():
     global img
     global cvImage
-    if (n == 12):
-        img = tk.PhotoImage(
-            file="images/q" + str(random.randint(0, 14)) + ".gif")
-        cvImage = canvas.create_image(
-            canvasSide * 0.5, canvasSide * 0.5, anchor='center', image=img)
+    global n
+
+    position = (canvasSide * 0.5, canvasSide * 0.5)
+
     Type = G.conetType()
     deleteAll()
+
     if (Type == "Strong"):
-        img = tk.PhotoImage(file="images/s" + str(random.randint(0, 13)) + ".gif")
-        cvImage = canvas.create_image(
-            canvasSide * 0.5, canvasSide * 0.5, anchor='center', image=img)
-    elif (Type == "Weak"):
-        img = tk.PhotoImage(file="images/w" + str(random.randint(0, 13)) + ".gif")
-        cvImage = canvas.create_image(
-            canvasSide * 0.5, canvasSide * 0.5, anchor='center', image=img)
+        img = tk.PhotoImage(
+            file="images/s" + str(random.randint(0, 13)) + ".gif")
     elif (Type == "Unidirect"):
-        img = tk.PhotoImage(file="images/u" + str(random.randint(0, 12)) + ".gif")
-        cvImage = canvas.create_image(
-            canvasSide * 0.5, canvasSide * 0.5, anchor='center', image=img)
+        img = tk.PhotoImage(
+            file="images/u" + str(random.randint(0, 12)) + ".gif")
+    elif (Type == "Weak"):
+        img = tk.PhotoImage(
+            file="images/w" + str(random.randint(0, 13)) + ".gif")
     else:
-        print("Errors")
+        img = tk.PhotoImage(
+            file="images/q" + str(random.randint(0, 14)) + ".gif")
+    
+    cvImage = canvas.create_image(position, anchor='center', image=img)
 
 # 创建 canvas 区域
 canvas = tk.Canvas(window, bd=0, bg='white', relief='groove',
                    height=canvasSide+100, width=canvasSide)
-
 
 canvas.bind('<Button-1>' , onLeftButtonDown)
 canvas.bind('<B1-Motion>', drawaline)
