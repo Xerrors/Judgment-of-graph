@@ -11,7 +11,7 @@ window = tk.Tk()
 window.title('离散数学-我的最爱')
 window.geometry('800x900')
 window.resizable(width=False, height=False)
-window.iconbitmap("./icon.png")
+window.iconbitmap("./icon.ico")
 
 # 图像的设置
 img = 0
