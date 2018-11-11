@@ -10,14 +10,14 @@ class Graph():
     def conetType(self):
         self.martix.reachableMartix()
         if (self.martix.size == 12):
-            return "SB"
+            return "No_Graph_Here"
         for i in range(self.martix.size):
             for j in range(self.martix.size):
                 if (self.martix.M[i][j] + self.martix.M[j][i] == 0):
-                    return "Weak"
+                    return "Weakly_Connected_Graph"
                 if (self.martix.M[i][j] + self.martix.M[j][i] == 1):
-                    return "Unidirect"
-        return "Strong"
+                    return "Unilaterally_Connected _Graph"
+        return "Strongly_Connected_Graph"
 
     def printMartix(self):
         """按照行输出矩阵"""

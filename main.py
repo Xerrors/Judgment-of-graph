@@ -190,21 +190,11 @@ def judgeConet():
 
     Type = G.conetType()
     deleteAll()
-
-    if (Type == "Strong"):
-        img = tk.PhotoImage(
-            file="images/s" + str(random.randint(0, 13)) + ".gif")
-    elif (Type == "Unidirect"):
-        img = tk.PhotoImage(
-            file="images/u" + str(random.randint(0, 12)) + ".gif")
-    elif (Type == "Weak"):
-        img = tk.PhotoImage(
-            file="images/w" + str(random.randint(0, 13)) + ".gif")
-    else:
-        img = tk.PhotoImage(
-            file="images/q" + str(random.randint(0, 14)) + ".gif")
-    
-    cvImage = canvas.create_image(position, anchor='center', image=img)
+    try:
+        img = tk.PhotoImage(file="images/" + Type + str(random.randint(0, 12)) + ".gif")
+        cvImage = canvas.create_image(position, anchor='center', image=img)
+    except:
+        cvImage = canvas.create_text(position, text=Type, font=('Couried', 40))
 
 # 创建 canvas 区域
 canvas = tk.Canvas(window, bd=0, bg='white', relief='groove',
