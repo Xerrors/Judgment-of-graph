@@ -48,10 +48,10 @@ def paintCircle():
         Ox = R * math.cos(angl) + canvasSide * 0.5
         Oy = canvasSide * 0.5 - R * math.sin(angl)
 
-        oval[i] = [Ox,Oy]
-
-        canvas.create_oval(
-            (Ox - r, Oy - r, Ox + r, Oy + r), fill=ovalColor, width=0, tag='oval')
+        oval[i] = [Ox, Oy]
+        
+        points = (Ox - r, Oy - r, Ox + r, Oy + r)
+        canvas.create_oval(points, fill=ovalColor, width=0, tag='oval')
 
 # 删除圆圈直线和箭头
 def deleteAll():

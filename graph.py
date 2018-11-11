@@ -8,7 +8,7 @@ class Graph():
         self.martix = Martix(n)
 
     def conetType(self):
-        self.martix.reachableMartix()
+        self.printMRplus()
         if (self.martix.size == 12):
             return "No_Graph_Here"
         for i in range(self.martix.size):
