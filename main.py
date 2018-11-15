@@ -63,28 +63,13 @@ def deleteAll():
     for item in canvas.find_withtag("arrow"):
         canvas.delete(item)
 
-# 画个小星星
-def polygon_star(event):
-
-    # p = 20
-    # t = 5
-    # x = random.randint(0+p,canvasSide-p)
-    # y = random.randint(0+p,canvasSide-p)
-
-    # points = []
-    # fill='#e03636'
-    # for i in (1,-1):
-    #     points.extend((x,       y + i*p))
-    #     points.extend((x + i*t, y + i*t))
-    #     points.extend((x + i*p, y))
-    #     points.extend((x + i*t, y - i * t))
-
-    # # canvas.create_polygon(points, fill=fill, width=0)
+# 画个小彩蛋
+def drawEggs(event):
 
     x = random.randint(100,canvasSide-100)
     y = random.randint(100,canvasSide-100)
 
-    canvas.create_text(x,y,text="离散")
+    canvas.create_text(x,y,text="离散", fill="#000000")
 
 # 画个箭头
 def drawArrow(line, eventX, eventY):
@@ -202,7 +187,7 @@ canvas = tk.Canvas(window, bd=0, bg='white', relief='groove',
 
 canvas.bind('<Button-1>' , onLeftButtonDown)
 canvas.bind('<B1-Motion>', drawaline)
-canvas.bind("<Button-2>" , polygon_star)
+canvas.bind("<Button-2>" , drawEggs)
 canvas.bind('<ButtonRelease-1>', onLeftButtonUp)
 
 # 创建 spanbox
