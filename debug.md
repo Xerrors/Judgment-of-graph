@@ -53,3 +53,9 @@ def judgeWCG(self):
 ![image-20181115232622217](assets/image-20181115232622217-2295582.png)
 
 由于在Python中，如果是对数组 A 和数组 B 进行如下操作的话，`A = B` 并不会复制一份数组，而是将 B 数组的地址赋给了 A， 对 A 进行操作修改的同时，B 的值也在发生改变。所以需要用到循环来进行赋值，如图绿色区域。
+
+3. 必须使用 Python3 来执行。
+
+![image-20181116215413961](assets/image-20181116215413961-2376453.png)
+
+由于我使用 homebrew 安装的 python 版本是 2.7 版本，所以如果使用了终端默认的 python 的话，会默认使用 Python2.7 来执行，而 tkinter 在Python2.7 的版本中引用的时候需要使用 import Tkinter 来引用，所以出现了报错，所以需要使用 python3 main.py 来执行python文件才能不报错。
