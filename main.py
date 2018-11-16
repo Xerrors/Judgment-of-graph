@@ -25,7 +25,7 @@ line = Line()
 
 # 圆圈的设置
 n = 12  # 圆圈数
-r = 40  # 圆圈的半径
+r = 30  # 圆圈的半径
 CircleIndex = -1  # 圆圈的索引
 ovalColor = '#1F6FB5'  # 圆圈的颜色
 oval = [[0] * 2 for i in range(n)]  # 圆圈的数组
@@ -181,7 +181,6 @@ def judgeConet():
     except:
         cvImage = canvas.create_text(position, text=Type, font=('Couried', 40))
 
-# 创建 canvas 区域
 canvas = tk.Canvas(window, bd=0, bg='white', relief='groove',
                    height=canvasSide+100, width=canvasSide)
 

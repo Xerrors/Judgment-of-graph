@@ -7,7 +7,7 @@ class Martix():
     def __init__(self,n):
         """初始化一个随机二维矩阵"""
         self.size = n
-        self.M = [[0]*n for i in range(n)]
+        self.M = [[0] * n for i in range(n)]
 
     def addEdge(self,v,w):
         """在节点 v、w 间添加一条边 v -> w """
@@ -30,11 +30,36 @@ class Martix():
 
     def reachableMartix(self):
         """Warshall计算可达矩阵的算法"""
-        A = self.M
+        A = [[0] * self.size for i in range(self.size)]
+        for i in range(self.size):
+            A[i] = self.M[i][:]
+        
         for i in range(self.size):
             for j in range (self.size):
                 if(A[j][i]):
                     for k in range(self.size):
                         A[j][k] |= A[i][k]
         self.MRplus = A
+
+    def judgeWCG(self):
+        B = [[0] * self.size for i in range(self.size)]
+        for i in range(self.size):
+            for j in range(i, self.size):
+                if (self.M[i][j]):
+                    B[i][j] = 1
+                    B[j][i] = 1
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if(B[j][i]):
+                    for k in range(self.size):
+                        B[j][k] |= B[i][k]
+
+        for i in range(self.size):
+            for j in range(self.size):
+                if (B[j][i] == 0):
+                    return False
+        return True
+
+
 

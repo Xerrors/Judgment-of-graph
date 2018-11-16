@@ -8,14 +8,21 @@ class Graph():
         self.martix = Martix(n)
 
     def conetType(self):
+        """判断图的类型"""
         self.printMRplus()
+        self.printMartix()
+        # 判断用户是否绘制 图
         if (self.martix.size == 12):
             return "No_Graph_Here"
         for i in range(self.martix.size):
+
             for j in range(self.martix.size):
-                if (self.martix.M[i][j] + self.martix.M[j][i] == 0):
-                    return "Weakly_Connected_Graph"
-                if (self.martix.M[i][j] + self.martix.M[j][i] == 1):
+                if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 0):
+                    if (self.martix.judgeWCG()):
+                        return "Weakly_Connected_Graph"
+                    else:
+                        return "这不是个连通的图"
+                if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 1):
                     return "Unilaterally_Connected _Graph"
         return "Strongly_Connected_Graph"
 
