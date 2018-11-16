@@ -21,7 +21,7 @@ class Graph():
                     if (self.martix.judgeWCG()):
                         return "Weakly_Connected_Graph"
                     else:
-                        return "这不是个连通的图"
+                        return "Not_Connected_Graph"
                 if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 1):
                     return "Unilaterally_Connected _Graph"
         return "Strongly_Connected_Graph"

@@ -165,7 +165,7 @@ def onLeftButtonUp(event):
     line.lastLine = 0
     line.lastArrow = 0
 
-# 判断图的类型
+# 判断图的类型  
 def judgeConet():
     global img
     global cvImage

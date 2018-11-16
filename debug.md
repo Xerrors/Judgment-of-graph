@@ -19,7 +19,34 @@ if (self.martix.size == 12):
 
 Emmm, 大概反应30秒之后，我意识到这个算法不对，，所以，再改！
 
-其实我是有个大概思路的，就是把邻接矩阵对称一下，然后判断可达矩阵，这个时候就能判断时候是弱连通了。
+其实我是有个大概思路的，就是把邻接矩阵对称一下，然后判断可达矩阵，这个时候就能判断是否 是弱连通了。
+
+最终就是按照这个想法实现的。完美解决这个问题。
+
+```python
+def judgeWCG(self):
+    """判断是否是弱连通图"""
+    B = [[0] * self.size for i in range(self.size)]
+    for i in range(self.size):
+        for j in range(i, self.size):
+            if (self.M[i][j]):
+                B[i][j] = 1
+                B[j][i] = 1
+
+    for i in range(self.size):
+        for j in range(self.size):
+            if(B[j][i]):
+                for k in range(self.size):
+                    B[j][k] |= B[i][k]
+
+    for i in range(self.size):
+        for j in range(self.size):
+            if (B[j][i] == 0):
+                return False
+    return True
+```
+
+
 
 2. 对数组的复制操作
 
