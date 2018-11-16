@@ -42,6 +42,7 @@ class Martix():
         self.MRplus = A
 
     def judgeWCG(self):
+        """判断是否是弱连通图"""
         B = [[0] * self.size for i in range(self.size)]
         for i in range(self.size):
             for j in range(i, self.size):
