@@ -4,7 +4,7 @@ class Line():
     """表示直线的类"""
 
     def __init__(self):
-        self.color = '#1F6FB5'
+        self.color = '#5ED5D1'
         self.startX = -1
         self.startY = -1
         self.endX = 0

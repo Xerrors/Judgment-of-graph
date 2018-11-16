@@ -27,7 +27,7 @@ line = Line()
 n = 12  # 圆圈数
 r = 30  # 圆圈的半径
 CircleIndex = -1  # 圆圈的索引
-ovalColor = '#1F6FB5'  # 圆圈的颜色
+ovalColor = line.color # 圆圈的颜色
 oval = [[0] * 2 for i in range(n)]  # 圆圈的数组
 
 # 创建一个图的实例
