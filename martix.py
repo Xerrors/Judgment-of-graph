@@ -35,7 +35,7 @@ class Martix():
             A[i] = self.M[i][:]
         
         for i in range(self.size):
-            for j in range (self.size):
+            for j in range(self.size):
                 if(A[j][i]):
                     for k in range(self.size):
                         A[j][k] |= A[i][k]
@@ -45,7 +45,7 @@ class Martix():
         """判断是否是弱连通图"""
         B = [[0] * self.size for i in range(self.size)]
         for i in range(self.size):
-            for j in range(i, self.size):
+            for j in range(self.size):
                 if (self.M[i][j]):
                     B[i][j] = 1
                     B[j][i] = 1
@@ -58,7 +58,7 @@ class Martix():
 
         for i in range(self.size):
             for j in range(self.size):
-                if (B[j][i] == 0):
+                if (B[i][j] == 0):
                     return False
         return True
 
