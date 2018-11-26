@@ -15,6 +15,7 @@ class Graph():
         if (self.martix.size == 12):
             return "No_Graph_Here"
         for i in range(self.martix.size):
+
             for j in range(self.martix.size):
                 if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 0 and i != j):
                     if (self.martix.judgeWCG()):
