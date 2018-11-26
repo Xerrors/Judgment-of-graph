@@ -74,4 +74,47 @@ def judgeWCG(self):
 
 ![image-20181126130033121](assets/image-20181126130033121-3208433.png)
 
-我发现在修改为无向图时发生了一些小毛病，更改之后程序正常。
+我发现在修改为无向图时发生了一些小毛病，更改之后发现，虽然程序不再把这个图当作非连通图了，但是去而错以为他是个弱连通图，所以我们就引发了另外一个Bug，所以，经过排查发现问题所在：
+
+```python 
+    def conetType(self):
+        """判断图的类型"""
+        self.printMRplus()
+        self.printMartix()
+        # 判断用户是否绘制 图
+        if (self.martix.size == 12):
+            return "No_Graph_Here"
+        for i in range(self.martix.size):
+            for j in range(self.martix.size):
+==>             if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 0):
+                    if (self.martix.judgeWCG()):
+                        return "Weakly_Connected_Graph"
+                    else:
+                        return "Not_Connected_Graph"
+                if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 1):
+                    return "Unilaterally_Connected _Graph"
+        return "Strongly_Connected_Graph"
+```
+
+上面的代码中，我利用判断可达矩阵的正向和反向来判断图的类型，如果正向和反向都不通就有两种情况：弱连通图和非连通图，当正向和反向中只有一个成立时，就是单向连通，而双向都成立就是强连通图；这里面有一个逻辑错误，对于单向连通图可能并不构成回路，也就是说，节点 i 与自身可能并没有连通，所以当节点自身与自身相加时得到的值是 0 ，就判断为弱连通或者单向连通，这显然是错误的。**解决办法**：在判断的时候对 i 和 j 进行检测；
+
+```python 
+     def conetType(self):
+        """判断图的类型"""
+        self.printMRplus()
+        self.printMartix()
+        # 判断用户是否绘制 图
+        if (self.martix.size == 12):
+            return "No_Graph_Here"
+        for i in range(self.martix.size):
+            for j in range(self.martix.size):
+==>             if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 0 and i != j):
+                    if (self.martix.judgeWCG()):
+                        return "Weakly_Connected_Graph"
+                    else:
+                        return "Not_Connected_Graph"
+                if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 1):
+                    return "Unilaterally_Connected _Graph"
+        return "Strongly_Connected_Graph"
+```
+
