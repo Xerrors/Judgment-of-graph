@@ -1,5 +1,10 @@
 # Judge-TKinter
 
+## 0. 运行方法
+```
+python3 main.py
+```
+
 前言：前前后后、断断续续写了大约两个星期由于某些原因不想使用 QT 做界面编程，索性就使用 Python 写一个界面看一下，思来想去，选了个最古老的 Tkinter 模块；
 
 ```enviroment
