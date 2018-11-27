@@ -179,7 +179,7 @@ def judgeConet():
         img = tk.PhotoImage(file="images/" + Type + str(random.randint(0, 12)) + ".gif")
         cvImage = canvas.create_image(position, anchor='center', image=img)
     except:
-        cvImage = canvas.create_text(position, text=Type, font=('Couried', 40))
+        cvImage = canvas.create_text(position, text=" ".join(Type.split("_")), font=('Couried', 40))
 
 canvas = tk.Canvas(window, bd=0, bg='white', relief='groove',
                    height=canvasSide+100, width=canvasSide)

@@ -14,18 +14,17 @@ class Graph():
         # 判断用户是否绘制 图
         if (self.martix.size == 12):
             return "No_Graph_Here"
+        result = "Strongly_Connected_Graph"
         for i in range(self.martix.size):
-
             for j in range(self.martix.size):
                 if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 0 and i != j):
                     if (self.martix.judgeWCG()):
-                        return "Weakly_Connected_Graph"
+                        result = "Weakly_Connected_Graph"
                     else:
-                        return "Not_Connected_Graph"
+                        result = "Not_Connected_Graph"
                 if (self.martix.MRplus[i][j] + self.martix.MRplus[j][i] == 1):
-                    return "Unilaterally_Connected _Graph"
-        return "Strongly_Connected_Graph"
-
+                    result = "Unilaterally_Connected _Graph"
+        return result
     def printMartix(self):
         """按照行输出矩阵"""
         print("\nHere is your Martix ~, enjoy it ~")
