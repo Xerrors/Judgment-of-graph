@@ -9,11 +9,11 @@ class Graph():
 
     def conetType(self):
         """判断图的类型"""
-        self.printMRplus()
-        self.printMartix()
         # 判断用户是否绘制 图
         if (self.martix.size == 12):
             return "No_Graph_Here"
+        self.printMRplus()
+        self.printMartix()
         result = "Strongly_Connected_Graph"
         for i in range(self.martix.size):
             for j in range(self.martix.size):
